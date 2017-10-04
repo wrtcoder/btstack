@@ -110,7 +110,10 @@ typedef uint8_t sm_key_t[16];
 
 // PBAP data
 #define PBAP_DATA_PACKET        0x0e
- 
+
+// Mesh Provisioning PDU
+#define PROVISIONING_DATA_PACKET 0x0f
+
 // debug log messages
 #define LOG_MESSAGE_PACKET      0xfc
 
