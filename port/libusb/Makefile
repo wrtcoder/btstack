@@ -3,7 +3,9 @@ BTSTACK_ROOT = ../..
 
 CORE += main.c btstack_stdin_posix.c
 
-COMMON  += hci_transport_h2_libusb.c btstack_run_loop_posix.c le_device_db_fs.c btstack_link_key_db_fs.c wav_util.c
+COMMON += hci_transport_h2_libusb.c btstack_run_loop_posix.c le_device_db_fs.c btstack_link_key_db_fs.c wav_util.c
+
+COMMON += btstack_audio_portaudio.c btstack_audio.c
 
 include ${BTSTACK_ROOT}/example/Makefile.inc
 
@@ -30,12 +32,13 @@ LDFLAGS += $(shell pkg-config libusb-1.0 --libs)
 endif
 
 # use pkg-config for portaudio
-# CFLAGS  += $(shell pkg-config portaudio-2.0 --cflags) -DHAVE_PORTAUDIO
-# LDFLAGS += $(shell pkg-config portaudio-2.0 --libs)
+CFLAGS  += $(shell pkg-config portaudio-2.0 --cflags) -DHAVE_PORTAUDIO
+LDFLAGS += $(shell pkg-config portaudio-2.0 --libs)
 
 # hard coded flags for portaudio in /usr/local/lib
 # CFLAGS  += -I/usr/local/include -DHAVE_PORTAUDIO
 # LDFLAGS += -L/sw/lib -lportaudio -Wl,-framework,CoreAudio -Wl,-framework,AudioToolbox -Wl,-framework,AudioUnit -Wl,-framework,Carbon
+
 
 clean_src:
 	rm -rf * ${BTSTACK_ROOT}/src/*.o
