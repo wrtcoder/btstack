@@ -128,6 +128,7 @@ EXAMPLES = 					\
 	le_streamer				\
 	le_streamer_client      \
 	led_counter				\
+	mod_player	            \
 	pbap_client_demo		\
 	sdp_bnep_query 			\
 	sdp_general_query		\
@@ -276,6 +277,9 @@ a2dp_sink_demo: ${CORE_OBJ} ${COMMON_OBJ} ${CLASSIC_OBJ} ${SDP_CLIENT} ${SBC_ENC
 	${CC} $^ ${CFLAGS} ${LDFLAGS} -o $@
 
 dut_mode_classic: ${CORE_OBJ} ${COMMON_OBJ} ${CLASSIC_OBJ} dut_mode_classic.c
+	${CC} $^ ${CFLAGS} ${LDFLAGS} -o $@
+
+mod_player: ${CORE_OBJ} ${COMMON_OBJ} ${HXCMOD_PLAYER_OBJ} btstack_audio.o mod_player.c
 	${CC} $^ ${CFLAGS} ${LDFLAGS} -o $@
 
 clean:
